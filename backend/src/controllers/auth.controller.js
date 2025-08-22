@@ -1,6 +1,7 @@
 import User from "../models/User.model.js";
 import bcryptjs from "bcryptjs";
 import jwt from 'jsonwebtoken'
+import { upsertStreamUser } from "../lib/stream.js";
 export const signup = async (req, res) => {
   try {
     let { fullName, email, password } = req.body;
@@ -39,8 +40,18 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
     });
+try {
+  await upsertStreamUser({
+    id: newUser._id.toString(),
+    name: newUser.fullname,
+    email: newUser.email});
+    console.log(  "Stream user created",newUser.fullname)
+} catch (error) {
+  console.log("Error in creating stream user",error.message)
+}
 
-const token=jwt.sign({userId:newUser._id},process.env.JWT_SECRET,{expiresIn:'7d'})
+
+const token=jwt.sign({userId:newUser._id},process.env.SECRET,{expiresIn:'7d'})
 
 res.cookie("token",token,{
     httpOnly:true,
