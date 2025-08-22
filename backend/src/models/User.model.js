@@ -1,5 +1,4 @@
-// models/User.js
-const mongoose = require('mongoose');
+import mongoose from "mongoose"
 
 
 const userSchema = new mongoose.Schema(
@@ -25,7 +24,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: [6, 'Password must be at least 6 characters'],
-      select: false, 
+  
     },
     location: {
       type: String,
@@ -51,7 +50,7 @@ const userSchema = new mongoose.Schema(
       maxlength: [50, 'Learning language is too long'],
     },
     isonboarded:{
-        type:boolean,
+        type:Boolean,
         default:false
     },
     friends:[
