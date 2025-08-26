@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React from 'react'
+import {Routes,Route} from 'react-router'
+import HomePage from '../src/pages/HomePage'
+import SignUpPage from '../src/pages/SignUpPage'
+import LoginPage from '../src/pages/LoginPage'
+import NotificationsPage from '../src/pages/NotificationsPage'
+import CallPage from '../src/pages/CallPage'
+import ChatPage from '../src/pages/ChatPage'
+import OnBoardingPage from '../src/pages/OnBoardingPage'
+import {Toaster} from 'react-hot-toast'
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <Toaster/>
+      <Routes>
+<Route path='/' element={<HomePage/>}/>
+<Route path='/signup' element={<SignUpPage/>}/>
+<Route path='/login' element={<LoginPage/>}/>
+<Route path='/notifications' element={<NotificationsPage/>}/>
+<Route path='/call' element={<CallPage/>}/>
+<Route path='/chat' element={<ChatPage/>}/>
+<Route path='/onboarding' element={<OnBoardingPage/>}/>
+      </Routes>
+    </div>
   )
 }
 
