@@ -4,10 +4,10 @@ import jwt from 'jsonwebtoken'
 import { upsertStreamUser } from "../lib/stream.js";
 export const signup = async (req, res) => {
   try {
-    let { fullName, email, password } = req.body;
+    let { fullname, email, password } = req.body;
 
     
-    if (!fullName || !email || !password) {
+    if (!fullname || !email || !password) {
       return res.status(400).json({ message: "Please enter all the fields" });
     }
     if (password.length < 6) {
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
 
     
     const newUser = await User.create({
-      fullname: fullName,
+      fullname: fullname,
       email,
       password: hashedPassword,
     });
@@ -127,7 +127,15 @@ if(!fullname||!bio||!nativeLanguage||!learningLanguage||!location){
 }
  const updatedUser=await User.findByIdAndUpdate(userId,{...req.body,isonboarded:true},{new:true});
 
-
+try {
+  await upsertStreamUser({
+    id:updatedUser._id.toString(),
+    name:updatedUser.fullname
+  })
+  console.log("Stream user updated",updatedUser.fullname)
+} catch (streamError) {
+  console.log("Error in updating stream user",streamError.message)
+}
  res.status(200).json({user:updatedUser,success:true})
   } catch (error) {
     console.error("Onboarding error:", error.message);
