@@ -72,7 +72,6 @@ res.status(201).json(friendRequest)
 }
 
 
-
 export const acceptFriendRequest=async(req,res)=>{
 
     try {
@@ -104,8 +103,7 @@ res.status(200).json({message:"Friend request accepted successfully"})
 }
 
 
-
-export const getFirendRequests=async(req,res)=>{
+export const getFriendRequests=async(req,res)=>{
     try {
         const incomingReq=await FriendRequest.find({
             status:"pending",
@@ -126,7 +124,7 @@ export const getFirendRequests=async(req,res)=>{
     }
 }
 
-export const getOutgoingFirendRequests=async(req,res)=>{
+export const getOutgoingFriendRequests=async(req,res)=>{
     try {
         const outgoingRequest=await FriendRequest.find({
             status:"pending",
