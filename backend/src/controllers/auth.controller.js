@@ -119,5 +119,18 @@ export const logout = async (req,res) => {
 
 
 export const onboard=async(req,res)=>{
-  
+  try {
+    const userId=req.user._id;
+    const{fullname,bio,nativeLanguage,learningLanguage,location}=req.body
+if(!fullname||!bio||!nativeLanguage||!learningLanguage||!location){
+  return res.status(400).json({message:"All fields are required"})
+}
+ const updatedUser=await User.findByIdAndUpdate(userId,{...req.body,isonboarded:true},{new:true});
+
+
+ res.status(200).json({user:updatedUser,success:true})
+  } catch (error) {
+    console.error("Onboarding error:", error.message);
+    return res.status(500).json({ message: "Server error" });
+  }
 }
