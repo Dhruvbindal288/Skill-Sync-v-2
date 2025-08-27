@@ -9,9 +9,6 @@ import CallPage from "../src/pages/CallPage";
 import ChatPage from "../src/pages/ChatPage";
 import OnBoardingPage from "../src/pages/OnBoardingPage";
 import { Toaster } from "react-hot-toast";
-
-import { axiosinstance } from "./lib/axios";
-import { getAuthUser } from "./lib/api";
 import useAuthuser from "./hooks/useAuthuser";
 function App() {
   const { isLoading, authUser } = useAuthuser();

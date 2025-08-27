@@ -2,7 +2,6 @@
 import { useState } from "react";
 import call from "../assets/call.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
 import { toast } from "react-hot-toast";
 import { signup } from "../lib/api";
 function SignUpPage() {
