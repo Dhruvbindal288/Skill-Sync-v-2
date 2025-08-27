@@ -2,8 +2,9 @@
 import { useState } from "react";
 import call from "../assets/call.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { axiosinstance } from "../lib/axios";
+
 import { toast } from "react-hot-toast";
+import { signup } from "../lib/api";
 function SignUpPage() {
   const [signupData, setSignupData] = useState({
     fullname: "",
@@ -13,16 +14,13 @@ function SignUpPage() {
 
   const queryClient=useQueryClient();
 const {mutate,isPending,error}=useMutation({
-  mutationFn:async()=>{
-    const response=await axiosinstance.post("/auth/signup",signupData)
-    return response.data
-  },
+  mutationFn:signup,
   onSuccess:()=>{
     queryClient.invalidateQueries({queryKey:["authUser"]});
      toast.success("Signup successfully")
   },
   onError: (err) => {
-      // optional toast
+      
       toast.error(err.response?.data?.message || "Something went wrong")
     },
 })
@@ -30,7 +28,7 @@ const {mutate,isPending,error}=useMutation({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    mutate()
+    mutate(signupData)
   };
 
   return (
