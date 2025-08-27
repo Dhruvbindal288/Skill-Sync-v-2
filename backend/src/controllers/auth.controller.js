@@ -133,7 +133,8 @@ if(!fullname||!bio||!nativeLanguage||!learningLanguage||!location){
 try {
   await upsertStreamUser({
     id:updatedUser._id.toString(),
-    name:updatedUser.fullname
+    name:updatedUser.fullname,
+    image:updatedUser.profilepic || "",
   })
   console.log("Stream user updated",updatedUser.fullname)
 } catch (streamError) {
