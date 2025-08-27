@@ -33,12 +33,15 @@ export const signup = async (req, res) => {
     
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-
+    
+const randomSeed = Math.floor(Math.random() * 1000);
+const randomProfile = `https://avatars.dicebear.com/api/identicon/${randomSeed}.png`;
     
     const newUser = await User.create({
       fullname: fullname,
       email,
       password: hashedPassword,
+      profilepic:randomProfile
     });
 try {
   await upsertStreamUser({
