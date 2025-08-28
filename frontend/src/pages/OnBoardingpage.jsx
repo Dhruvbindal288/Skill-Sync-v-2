@@ -12,7 +12,7 @@ const queryClient=useQueryClient()
   bio: authUser?.bio || "",
   nativeLanguage: authUser?.nativeLanguage || "",
   learningLanguage: authUser?.learningLanguage || "",
-  profilePic: authUser?.profilePic || "https://api.dicebear.com/6.x/avataaars/png?seed=9",
+  profilepic: authUser?.profilepic || "https://api.dicebear.com/6.x/avataaars/png?seed=2",
   location: authUser?.location || ""
   });
 
@@ -41,7 +41,7 @@ const queryClient=useQueryClient()
         {/* Profile Picture */}
         <div className="flex items-center gap-4 mb-4">
           <img
-            src={formState.profilePic}
+            src={formState.profilepic}
             alt={formState.fullname}
             className="w-20 h-20 rounded-full border"
           />
@@ -51,7 +51,7 @@ const queryClient=useQueryClient()
             onClick={() =>
               setFormState({
                 ...formState,
-                profilePic: `https://api.dicebear.com/6.x/avataaars/png?seed=${Math.floor(Math.random() * 1000)}`
+                profilepic: `https://api.dicebear.com/6.x/avataaars/png?seed=${Math.floor(Math.random() * 1000)}`
               })
             } 
           >

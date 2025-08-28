@@ -51,7 +51,9 @@ if (isLoading) {
         <Route
           path="/notifications"
           element={
-            isAuthenticated ? <NotificationsPage /> : <Navigate to="/login" />
+            isAuthenticated ? <Layout showSidebar={true}>
+              <NotificationsPage />
+              </Layout> : <Navigate to="/login" />
           }
         />
         <Route

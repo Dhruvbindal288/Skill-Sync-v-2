@@ -33,7 +33,7 @@ function Sidebar() {
         </NavLink>
 
         <NavLink
-          to="/friends"
+          to="/notifications"
           className={({ isActive }) =>
             isActive
               ? `${linkClasses} ${activeClasses}`
@@ -57,8 +57,8 @@ function Sidebar() {
 
       <div className="flex items-center gap-3 p-3">
   <img
-    src={authUser?.profilePic}
-    alt="User"
+    src={authUser?.profilepic}
+    alt={authUser?.fullname}
     className="w-12 h-12 rounded-full object-cover border border-gray-300"
   />
   <div>
