@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import call from "../assets/call.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -12,7 +11,7 @@ function SignUpPage() {
   });
 
   const queryClient=useQueryClient();
-const {mutate,isPending,error}=useMutation({
+const {mutate,isPending}=useMutation({
   mutationFn:signup,
   onSuccess:()=>{
     queryClient.invalidateQueries({queryKey:["authUser"]});
