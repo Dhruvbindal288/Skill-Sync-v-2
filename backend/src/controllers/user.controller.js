@@ -88,7 +88,7 @@ friendRequest.status="accepted";
 
 await friendRequest.save();
 
-await User.findByIdAndUpdate(friendRequest.ssender,{
+await User.findByIdAndUpdate(friendRequest.sender,{
     $push:{friends:friendRequest.recipient}
 })
 
@@ -105,18 +105,18 @@ res.status(200).json({message:"Friend request accepted successfully"})
 
 export const getFriendRequests=async(req,res)=>{
     try {
-        const incomingReq=await FriendRequest.find({
+        const incomingReqs=await FriendRequest.find({
             status:"pending",
             recipient:req.user._id
-        }).populate("sender","fullname,profilePic nativeLanguage learningLanguage")
+        }).populate("sender","fullname profilePic nativeLanguage learningLanguage")
 
 
         const acceptedReqs=await FriendRequest.find({
             sender:req.user._id,
             status:"accepted"
-        }).populate("recipient" ,"fulname profilePic");
+        }).populate("recipient" ,"fullname profilePic");
 
-        res.status(200).json({incomingReq,acceptedReqs} )
+        res.status(200).json({incomingReqs,acceptedReqs} )
 
 } catch (error) {
         console.log("Error in getFriendRequests",error);        
