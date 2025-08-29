@@ -7,7 +7,7 @@ const recommendedUsers=await User.find({
 
     $and:[
         {_id:{$ne:currentUserId}},
-        {id:{$nin:req.user.friends}},
+        {_id:{$nin:req.user.friends}},
     
         {isonboarded:true}
     ]
