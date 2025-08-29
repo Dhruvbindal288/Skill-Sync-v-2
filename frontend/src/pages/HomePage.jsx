@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosinstance } from "../lib/axios";
-
+import { toast } from "react-hot-toast";
 function HomePage() {
   const queryClient = useQueryClient();
   const [outgoingReqIds, setOutgoingReqIds] = useState(new Set());
@@ -42,6 +42,7 @@ function HomePage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["outgoingFriendReqs"] });
+      toast.success("Friend Request Send Successfully")
     },
   });
 

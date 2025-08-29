@@ -2,6 +2,7 @@
 import React from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosinstance } from "../lib/axios";
+import { toast } from "react-hot-toast";
 
 function NotificationsPage() {
   const queryClient = useQueryClient();
@@ -22,6 +23,7 @@ function NotificationsPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["friendRequests"]);
+toast.success("Friend Request Accepted Successfully")
       queryClient.invalidateQueries(["friends"]);
     },
   });
