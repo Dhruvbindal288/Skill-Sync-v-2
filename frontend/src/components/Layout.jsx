@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
-import Navbar from './navbar'
+import Navbar from './Navbar'
 
 function Layout({ children, showSidebar = false }) {
   return (
