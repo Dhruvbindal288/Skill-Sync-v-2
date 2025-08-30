@@ -1,19 +1,35 @@
-import React from "react";
-import { useLocation, useNavigate } from "react-router";
 
+import { useLocation} from "react-router";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-hot-toast";
 function Navbar() {
   const location = useLocation();
-  const navigate = useNavigate();
+const queryClient = useQueryClient();
+  
+  const logoutMutation = useMutation({
+    mutationFn: async () => {
+      const response = await axios.post("/api/logout");
+      return response.data;
+    },
+    onSuccess: () => {
+      
+      toast.success("Logged out successfully")
+      queryClient.invalidateQueries({ queryKey: ["autherUser"] });
+    },
+    onError: (error) => {
+      toast.error(error,"Logout failed. Please try again.");
+    },
+    });
 
   const handleLogout = () => {
-  
-    console.log("User logged out");
+    logoutMutation.mutate();
   };
 
   return (
     <div className="flex items-center justify-between px-6 py-3 bg-blue-100 sticky top-0 z-50">
-    
-      {location.pathname === "/chat" ? (
+      {location.pathname === "/chat/:id" ? (
         <h1 className="text-2xl font-bold text-amber-500 cursor-pointer">
           SkillSync
         </h1>
@@ -21,20 +37,13 @@ function Navbar() {
         <span />
       )}
 
-      
       <div className="flex items-center gap-3">
         <button
-          onClick={() => navigate("/chat")}
-          className="px-4 py-2 bg-green-500 text-white font-medium rounded-lg shadow hover:bg-green-600 transition"
-        >
-          Chat
-        </button>
-
-        <button
           onClick={handleLogout}
-          className="px-4 py-2 bg-red-500 text-white font-medium rounded-lg shadow hover:bg-red-600 transition"
+          className="px-4 py-2 bg-blue-500 text-white font-medium rounded-lg shadow hover:bg-red-600 transition"
+          disabled={logoutMutation.isLoading}
         >
-          Logout
+          {logoutMutation.isLoading ? "Logging out..." : "Logout"}
         </button>
       </div>
     </div>

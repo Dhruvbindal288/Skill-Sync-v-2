@@ -3,6 +3,7 @@ import call from "../assets/call.png";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { signup } from "../lib/api";
+import { Link } from "react-router"; 
 function SignUpPage() {
   const [signupData, setSignupData] = useState({
     fullname: "",
@@ -99,6 +100,12 @@ const {mutate,isPending}=useMutation({
             >
               {isPending?"Signing up..":"Create Account"}
             </button>
+            <p className="text-sm text-gray-700 mt-3 text-center">
+                          Already have an account?{" "}
+                          <Link to="/login" className="text-blue-600 hover:underline">
+                            Login 
+                          </Link>
+                        </p>
           </form>
         </div>
 

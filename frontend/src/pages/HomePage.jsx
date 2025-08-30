@@ -61,14 +61,14 @@ function HomePage() {
      
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">Friend Requests</h2>
+          <h2 className="text-2xl font-bold text-gray-900">Friends</h2>
           <p className="text-sm text-gray-500">
             People who want to connect with you
           </p>
         </div>
         <a href="/notifications">
           <button className="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium shadow-sm hover:bg-blue-700 hover:shadow-md transition-all duration-200">
-            View All
+            Friend Request
           </button>
         </a>
       </div>

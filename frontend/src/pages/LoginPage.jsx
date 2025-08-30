@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { axiosinstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
-import call from "../assets/call.png"; // use same image as signup
+import { Link } from "react-router"; 
+import call from "../assets/call.png"; 
 
 function LoginPage() {
   const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ function LoginPage() {
   return (
     <div className="h-screen flex items-center justify-center bg-blue-100">
       <div className="bg-blue-200 w-full lg:w-[70%] h-screen lg:h-[80%] lg:rounded-3xl flex flex-col-reverse lg:flex-row p-6 lg:p-10 gap-6 lg:gap-10">
-
+        
         {/* Form Section */}
         <div className="flex-1 flex flex-col justify-center">
           <h1 className="text-4xl text-amber-500 font-bold mb-6">SkillSync</h1>
@@ -73,6 +74,14 @@ function LoginPage() {
             >
               {isPending ? "Logging in..." : "Login"}
             </button>
+
+          
+            <p className="text-sm text-gray-700 mt-3 text-center">
+              Don’t have an account?{" "}
+              <Link to="/signup" className="text-blue-600 hover:underline">
+                Sign up
+              </Link>
+            </p>
           </form>
         </div>
 
