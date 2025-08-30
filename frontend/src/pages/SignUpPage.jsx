@@ -32,7 +32,7 @@ const {mutate,isPending}=useMutation({
 
   return (
     <div className="h-screen flex items-center justify-center ">
-      <div className="bg-blue-200 w-full lg:w-[70%] h-screen lg:h-[80%] lg:rounded-3xl flex flex-col-reverse lg:flex-row p-6 lg:p-10 gap-6 lg:gap-10">
+      <div className="bg-blue-200 w-full lg:w-[70%] h-screen lg:h-[82%] lg:rounded-3xl flex flex-col-reverse lg:flex-row p-6 lg:p-10 gap-6 lg:gap-10">
         
         {/* Form Section */}
         <div className="flex-1 flex flex-col justify-center">

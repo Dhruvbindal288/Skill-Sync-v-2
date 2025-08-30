@@ -16,7 +16,7 @@ const queryClient = useQueryClient();
     onSuccess: () => {
       
       toast.success("Logged out successfully")
-      queryClient.invalidateQueries({ queryKey: ["autherUser"] });
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
     onError: (error) => {
       toast.error(error,"Logout failed. Please try again.");
