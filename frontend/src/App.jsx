@@ -57,7 +57,7 @@ if (isLoading) {
           }
         />
         <Route
-          path="/call"
+          path="/call/:id"
           element={isAuthenticated ? <CallPage /> : <Navigate to="/login" />}
         />
         <Route

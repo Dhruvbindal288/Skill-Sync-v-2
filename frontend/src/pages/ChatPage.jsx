@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { axiosinstance } from '../lib/axios';
 import {Channel,ChannelHeader,Chat,MessageInput,MessageList,Thread,Window} from 'stream-chat-react';
 import { StreamChat } from 'stream-chat';
-
+import CallButton from '../components/CallButton';
 import toast from 'react-hot-toast';
 function ChatPage() {
   const{id:targetUserId}=useParams();
@@ -62,6 +62,17 @@ useEffect(()=>{
   initChat();
 
 },[tokenData,authUser,Stream_API_KEY,targetUserId]);
+
+const handleVideoCall=()=>{
+  if(chatChannel){
+    const callUrl=`${window.location.origin}/call/${chatChannel.id}`;
+    
+    chatChannel.sendMessage(
+      {text:`${authUser.fullname} is inviting you to a video call.Join by clicking url: ${callUrl}`}
+    )
+    toast.success("Invitation sent to user") 
+  }
+}
 if(loading)return <div>Loading...</div>
 else{
   return (
@@ -70,6 +81,7 @@ else{
       <Chat client={chatClient}>
         <Channel channel={chatChannel}>
 <div className='w-full relative'>
+  <CallButton handleVideoCall={handleVideoCall}/>
 <Window>
   <ChannelHeader></ChannelHeader>
 <MessageList></MessageList>
