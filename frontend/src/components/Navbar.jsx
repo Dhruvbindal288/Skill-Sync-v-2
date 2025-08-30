@@ -10,7 +10,7 @@ const queryClient = useQueryClient();
   
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const response = await axios.post("/api/logout");
+      const response = await axios.post("/auth/logout");
       return response.data;
     },
     onSuccess: () => {
