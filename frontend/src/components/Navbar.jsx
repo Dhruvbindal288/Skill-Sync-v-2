@@ -1,16 +1,16 @@
 
 import { useLocation} from "react-router";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import { axiosinstance } from "../lib/axios";
 function Navbar() {
   const location = useLocation();
 const queryClient = useQueryClient();
   
   const logoutMutation = useMutation({
     mutationFn: async () => {
-      const response = await axios.post("/auth/logout");
+      const response = await axiosinstance.post("/auth/logout");
       return response.data;
     },
     onSuccess: () => {
