@@ -32,17 +32,7 @@ function Sidebar() {
           Home
         </NavLink>
 
-        <NavLink
-          to="/notifications"
-          className={({ isActive }) =>
-            isActive
-              ? `${linkClasses} ${activeClasses}`
-              : `${linkClasses} hover:bg-amber-200`
-          }
-        >
-          Friends
-        </NavLink>
-
+        
         <NavLink
           to="/notifications"
           className={({ isActive }) =>
