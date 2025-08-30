@@ -7,7 +7,7 @@ import LoginPage from "../src/pages/LoginPage";
 import NotificationsPage from "../src/pages/NotificationsPage";
 import CallPage from "../src/pages/CallPage";
 import ChatPage from "../src/pages/ChatPage";
-import OnBoardingPage from "../src/pages/OnBoardingPage";
+import OnBoardingPage from "../src/pages/OnBoardingpage";
 import { Toaster } from "react-hot-toast";
 import useAuthuser from "./hooks/useAuthuser";
 import Layout from "./components/Layout";
