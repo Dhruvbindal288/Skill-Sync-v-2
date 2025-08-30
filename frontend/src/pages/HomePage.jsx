@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosinstance } from "../lib/axios";
 import { toast } from "react-hot-toast";
+import {Link} from 'react-router'
 function HomePage() {
   const queryClient = useQueryClient();
   const [outgoingReqIds, setOutgoingReqIds] = useState(new Set());
@@ -100,9 +100,9 @@ function HomePage() {
                     🌐 {user.nativeLanguage} · 📖 {user.learningLanguage}
                   </p>
                 </div>
-                <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium shadow-md hover:from-blue-600 hover:to-blue-700 hover:shadow-lg transition-all duration-200">
+             <Link to={`/chat/${user._id}`}><button className="px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-medium shadow-md hover:from-blue-600 hover:to-blue-700 hover:shadow-lg transition-all duration-200">
                   Message
-                </button>
+                </button></Link>   
               </li>
             ))}
           </ul>

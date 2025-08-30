@@ -61,7 +61,7 @@ if (isLoading) {
           element={isAuthenticated ? <CallPage /> : <Navigate to="/login" />}
         />
         <Route
-          path="/chat"
+          path="/chat/:id"
           element={isAuthenticated ? <ChatPage /> : <Navigate to="/login" />}
         />
         <Route
