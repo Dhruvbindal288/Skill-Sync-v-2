@@ -29,13 +29,13 @@ const queryClient = useQueryClient();
 
   return (
     <div className="flex items-center justify-between px-6 py-3 bg-blue-100 sticky top-0 z-50">
-      {location.pathname === "/chat/:id" ? (
-        <h1 className="text-2xl font-bold text-amber-500 cursor-pointer">
-          SkillSync
-        </h1>
-      ) : (
-        <span />
-      )}
+      {location.pathname.startsWith("/chat/") ? (
+  <h1 className="text-2xl font-bold text-amber-500 cursor-pointer">
+    SkillSync
+  </h1>
+) : (
+  <span />
+)}
 
       <div className="flex items-center gap-3">
         <button

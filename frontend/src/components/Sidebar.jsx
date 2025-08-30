@@ -1,6 +1,6 @@
 import React from 'react'
 import useAuthuser from '../hooks/useAuthuser'
-import { NavLink } from 'react-router'
+import { Link } from 'react-router'
 
 function Sidebar() {
   const { authUser } = useAuthuser()
@@ -13,14 +13,14 @@ function Sidebar() {
 
   return (
     <div className="w-60 bg-blue-100 hidden border-r lg:flex flex-col h-screen sticky top-0">
-      <NavLink to="/">
+      <Link to="/">
         <h1 className="text-3xl font-bold text-amber-500 cursor-pointer p-2 mb-2">
           SkillSync
         </h1>
-      </NavLink>
+      </Link>
 
       <nav className="flex-1 p-2 space-y-1">
-        <NavLink
+        <Link
           to="/"
           end
           className={({ isActive }) =>
@@ -30,10 +30,10 @@ function Sidebar() {
           }
         >
           Home
-        </NavLink>
+        </Link>
 
         
-        <NavLink
+        <Link
           to="/notifications"
           className={({ isActive }) =>
             isActive
@@ -42,7 +42,7 @@ function Sidebar() {
           }
         >
           Notifications
-        </NavLink>
+        </Link>
       </nav>
 
       <div className="flex items-center gap-3 p-3">
