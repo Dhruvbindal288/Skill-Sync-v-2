@@ -1,0 +1,20 @@
+{
+  "name": "language_learner",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000S\u0000k\u0000i\u0000l\u0000l\u0000-\u0000S\u0000y\u0000n\u0000c\u0000-\u0000v\u0000-\u00002\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dhruvbindal288/Skill-Sync-v-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dhruvbindal288/Skill-Sync-v-2/issues"
+  },
+  "homepage": "https://github.com/Dhruvbindal288/Skill-Sync-v-2#readme"
+}
